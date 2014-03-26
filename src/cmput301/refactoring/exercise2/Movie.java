@@ -2,27 +2,38 @@ package cmput301.refactoring.exercise2;
 
 public class Movie {
 	
+	private MovieProduct movieProduct = new MovieProduct();
 	public static final int CHILDRENS = 2;
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
 	
 	private String _title;
-	private int _priceCode;
-	
 	public Movie(String title, int priceCode) {
 		_title = title;
-		_priceCode = priceCode;
+		movieProduct.set_priceCode(priceCode);
 	}
 	
 	public int getPriceCode() {
-		return _priceCode;
+		return movieProduct.get_priceCode();
 	}
 	
 	public void setPriceCode(int arg) {
-		_priceCode = arg;
+		movieProduct.set_priceCode(arg);
 	}
 	
 	public String getTitle() {
 		return _title;
+	}
+
+	public double getCharge(Rental rental)
+	{
+
+		return rental.getCharge(movieProduct.get_priceCode());
+	}
+
+	public int getFrequentRenterPoints(int _daysRented)
+	{
+
+		return movieProduct.getFrequentRenterPoints(_daysRented);
 	}
 }
